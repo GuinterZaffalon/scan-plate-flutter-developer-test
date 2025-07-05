@@ -11,10 +11,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Reading Tracker',
+      title: 'Plate Recognizer',
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromRGBO(189, 213, 234, 1)),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color.fromRGBO(189, 213, 234, 1),
+        ),
+        scaffoldBackgroundColor: Color.fromRGBO(241, 245, 242, 100),
       ),
       home: const HomePage(),
     );
