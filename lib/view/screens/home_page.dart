@@ -62,11 +62,27 @@ class _HomePageState extends State<HomePage> {
               ),
               Row(
                 children: [
-                  ButtonPickImage(text: "Câmera", onButtonPresed: _takePhotoOfCamera,),
+                  ButtonPickImage(
+                    text: "Câmera",
+                    onButtonPresed: _takePhotoOfCamera,
+                  ),
                   Spacer(),
-                  ButtonPickImage(text: "Galeria", onButtonPresed: _selectPhotoOfGallery,),
+                  ButtonPickImage(
+                    text: "Galeria",
+                    onButtonPresed: _selectPhotoOfGallery,
+                  ),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              _image != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.file(_image!,
+                          width: 300, height: 300, fit: BoxFit.cover),
+                    )
+                  : Container()
             ],
           ),
         ));
