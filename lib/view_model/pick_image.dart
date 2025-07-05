@@ -7,7 +7,9 @@ class PickImage{
     return pickedFile;
   }
 
-  static pickImageOfCamera(){
-    
+  static Future<XFile?> pickImageOfCamera() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    return pickedFile;
   }
 }
