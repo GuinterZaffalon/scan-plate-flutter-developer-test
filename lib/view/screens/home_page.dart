@@ -26,6 +26,9 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(9),
           child: Column(
             children: [
+              SizedBox(
+                height: 12,
+              ),
               Text("Como gostaria de obter as informações \n pela placa?",
                   style: GoogleFonts.roboto(
                       color: Colors.black,
