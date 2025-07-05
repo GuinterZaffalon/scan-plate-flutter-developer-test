@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class ButtonPickImage extends StatefulWidget {
   final String text;
-  const ButtonPickImage({super.key, required this.text});
+  final VoidCallback onButtonPresed;
+  const ButtonPickImage({super.key, required this.text, required this.onButtonPresed});
 
   @override
   State<ButtonPickImage> createState() => _ButtonPickImage();
@@ -12,7 +13,7 @@ class _ButtonPickImage extends State<ButtonPickImage> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: widget.onButtonPresed,
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(
           Color.fromRGBO(53, 88, 52, 1)

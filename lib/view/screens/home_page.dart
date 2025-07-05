@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scan_plate/view/components/button_pick_image.dart';
+import 'package:scan_plate/view_model/pick_image.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +13,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  File? _image;
+
+  Future<void> _selectPhotoOfGallery() async {
+    final pickedFile = await PickImage.pickImageOfGalery();
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
+
+  Future<void> _takePhotoOfCamera() async {
+    final pickedFile = await PickImage.pickImageOfCamera();
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +62,9 @@ class _HomePageState extends State<HomePage> {
               ),
               Row(
                 children: [
-                  ButtonPickImage(text: "Câmera"),
+                  ButtonPickImage(text: "Câmera", onButtonPresed: _takePhotoOfCamera,),
                   Spacer(),
-                  ButtonPickImage(text: "Galeria"),
+                  ButtonPickImage(text: "Galeria", onButtonPresed: _selectPhotoOfGallery,),
                 ],
               )
             ],

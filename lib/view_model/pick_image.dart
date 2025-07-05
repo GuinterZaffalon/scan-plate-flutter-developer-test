@@ -9,7 +9,7 @@ class PickImage{
 
   static Future<XFile?> pickImageOfCamera() async {
     final ImagePicker picker = ImagePicker();
-    final XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final XFile? pickedFile = await picker.pickImage(source: ImageSource.camera);
     return pickedFile;
   }
 }
