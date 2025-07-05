@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scan_plate/view/components/button_pick_image.dart';
+import 'package:scan_plate/view/components/button_recognize_vehicle.dart';
 import 'package:scan_plate/view_model/pick_image.dart';
 
 class HomePage extends StatefulWidget {
@@ -77,11 +78,19 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               _image != null
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.file(_image!,
-                          width: 300, height: 300, fit: BoxFit.cover),
-                    )
+                  ? Column(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.file(_image!,
+                            width: 300, height: 300, fit: BoxFit.cover),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ButtonRecognizeVehicle(
+                          text: "Reconhecer Veículo", onButtonPresed: () {}),
+                      
+                    ])
                   : Container()
             ],
           ),
