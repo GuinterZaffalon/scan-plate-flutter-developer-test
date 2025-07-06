@@ -35,6 +35,7 @@ class _ResultPageState extends State<ResultPage> {
         backgroundColor: Color.fromRGBO(20, 40, 29, 1),
         foregroundColor: Colors.white,
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(9),

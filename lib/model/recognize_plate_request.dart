@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:io';
@@ -6,7 +7,7 @@ class RecognizePlate {
   static Future<Map<String, dynamic>?> recognizePlateRequest(File imageFile) async {
     final url = Uri.parse('https://api.platerecognizer.com/v1/plate-reader/');
     final request = http.MultipartRequest('POST', url)
-      ..headers['Authorization'] = 'Token '
+      ..headers['Authorization'] = 'Token ${dotenv.env['API_KEY']}'
       ..files.add(await http.MultipartFile.fromPath('upload', imageFile.path));
 
       request.fields['regions'] = 'br';
