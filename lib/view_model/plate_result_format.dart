@@ -1,4 +1,3 @@
-// models/plate_result.dart
 class PlateResult {
   final List<ModelMake> modelMake;
   final List<ColorResult> color;
@@ -6,17 +5,21 @@ class PlateResult {
   PlateResult({required this.modelMake, required this.color});
 
   factory PlateResult.fromJson(Map<String, dynamic> json) {
-    return PlateResult(
-      modelMake: (json['model_make'] as List<dynamic>?)
-              ?.map((e) => ModelMake.fromJson(e))
-              .toList() ??
-          [],
-      color: (json['color'] as List<dynamic>?)
-              ?.map((e) => ColorResult.fromJson(e))
-              .toList() ??
-          [],
-    );
-  }
+  final vehicle = json['vehicle'] as Map<String, dynamic>? ?? {};
+  final props = vehicle['props'] as Map<String, dynamic>? ?? {};
+
+  return PlateResult(
+    modelMake: (props['make_model'] as List<dynamic>?)
+            ?.map((e) => ModelMake.fromJson(e))
+            .toList() ??
+        [],
+    color: (props['color'] as List<dynamic>?)
+            ?.map((e) => ColorResult.fromJson(e))
+            .toList() ??
+        [],
+  );
+}
+
 }
 
 class ModelMake {
@@ -43,7 +46,7 @@ class ColorResult {
 
   factory ColorResult.fromJson(Map<String, dynamic> json) {
     return ColorResult(
-      color: json['color'] ?? '',
+      color: json['value'] ?? '',
       score: (json['score'] ?? 0).toDouble(),
     );
   }

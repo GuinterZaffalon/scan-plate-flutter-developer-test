@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scan_plate/model/recognize_plate_request.dart';
 import 'package:scan_plate/view/components/button_pick_image.dart';
 import 'package:scan_plate/view/components/button_recognize_vehicle.dart';
 import 'package:scan_plate/view/screens/result_page.dart';
