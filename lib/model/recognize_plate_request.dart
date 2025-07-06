@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 class RecognizePlate {
-  static Future<dynamic> recognizePlateRequest(File imageFile) async {
+  static Future<Map<String, dynamic>?> recognizePlateRequest(File imageFile) async {
     final url = Uri.parse('https://api.platerecognizer.com/v1/plate-reader/');
     final request = http.MultipartRequest('POST', url)
       ..headers['Authorization'] = 'Token '
