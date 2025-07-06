@@ -6,11 +6,12 @@ class RecognizePlate {
   static Future<dynamic> recognizePlateRequest(File imageFile) async {
     final url = Uri.parse('https://api.platerecognizer.com/v1/plate-reader/');
     final request = http.MultipartRequest('POST', url)
-      ..headers['Authorization'] = '2553da0a2ea05afb4a4f387c34ecb6cc051f0832'
+      ..headers['Authorization'] = 'Token '
       ..files.add(await http.MultipartFile.fromPath('upload', imageFile.path));
 
       request.fields['regions'] = 'br';
       request.fields['config'] = '{"detection_mode":"vehicle"}';
+      request.fields['mmc'] = 'true';
 
       final response = await request.send();
       final responseBody = await response.stream.bytesToString();

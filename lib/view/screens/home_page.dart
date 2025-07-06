@@ -1,9 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scan_plate/model/recognize_plate_request.dart';
 import 'package:scan_plate/view/components/button_pick_image.dart';
 import 'package:scan_plate/view/components/button_recognize_vehicle.dart';
+import 'package:scan_plate/view/screens/result_page.dart';
 import 'package:scan_plate/view_model/pick_image.dart';
 
 class HomePage extends StatefulWidget {
@@ -88,8 +89,12 @@ class _HomePageState extends State<HomePage> {
                         height: 20,
                       ),
                       ButtonRecognizeVehicle(
-                          text: "Reconhecer Veículo", onButtonPresed: () {}),
-                      
+                          text: "Reconhecer Veículo",
+                          onButtonPresed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ResultPage(file: _image!)))),
                     ])
                   : Container()
             ],
