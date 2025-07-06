@@ -56,13 +56,13 @@ class _ResultPageState extends State<ResultPage> {
                     height: 20,
                   ),
                   ButtonRecognizeVehicle(
-                      text: "<- Retornar e tentar novamente",
-                      onButtonPresed: () => Navigator.pop(context))
+                      text: "Retornar e tentar novamente",
+                      )
                 ]);
               } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                 return Column(children: [
                   Text(
-                      "Não foi possível reconhecer o veículo \n tente novamente!",
+                      "Não foi possível reconhecer o veículo,\ntente novamente!",
                       style: GoogleFonts.roboto(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,
@@ -71,8 +71,8 @@ class _ResultPageState extends State<ResultPage> {
                     height: 20,
                   ),
                   ButtonRecognizeVehicle(
-                      text: "<- Retornar e tentar novamente",
-                      onButtonPresed: () => Navigator.pop(context))
+                      text: "Retornar e tentar novamente",
+                      )
                 ]);
               }
               final results = snapshot.data!;
@@ -89,8 +89,8 @@ class _ResultPageState extends State<ResultPage> {
                         height: 30,
                       ),
                       ButtonRecognizeVehicle(
-                          text: "<- Reconhecer outro veículo",
-                          onButtonPresed: () => Navigator.pop(context))
+                          text: "Reconhecer outro veículo",
+                          )
                     ],
                   );
                 },

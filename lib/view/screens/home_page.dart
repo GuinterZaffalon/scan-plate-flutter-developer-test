@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scan_plate/view/components/button_pick_image.dart';
-import 'package:scan_plate/view/components/button_recognize_vehicle.dart';
 import 'package:scan_plate/view/screens/result_page.dart';
 import 'package:scan_plate/view_model/pick_image.dart';
 
@@ -87,13 +86,35 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         height: 20,
                       ),
-                      ButtonRecognizeVehicle(
-                          text: "Reconhecer Veículo",
-                          onButtonPresed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ResultPage(file: _image!)))),
+                      SizedBox(
+                          width: double.infinity,
+                          child: TextButton(
+                            onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ResultPage(file: _image!))),
+                            style: TextButton.styleFrom(
+                              backgroundColor: Color.fromRGBO(53, 88, 52, 1),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Reconhecer Veículo",
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                const SizedBox(width: 8),
+                                const Icon(Icons.arrow_forward,
+                                    color: Colors.white),
+                              ],
+                            ),
+                          ))
                     ])
                   : Container()
             ],
